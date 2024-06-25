@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'V7_studio.html'));
 });
 
-app.post('/save-phone-number', (req, res) => {
+app.post('https://v7-studio.onrender.com/save-phone-number', (req, res) => {
     console.log('Received request to save phone number');
     const name = req.body.name;
     const phoneNumber = req.body.phoneNumber;
