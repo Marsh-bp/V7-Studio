@@ -76,20 +76,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const bookNowButtons = document.querySelectorAll('.book');
+    const bookNowButtons = document.querySelectorAll('.book, .book-silver');
     const popup = document.getElementById('popup');
     const closeBtn = document.querySelector('.popup .close');
 
     bookNowButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            popup.style.display = 'block';
-        });
-    });
-    const bookNow = document.querySelectorAll('.book-silver');
-    const popups = document.getElementById('popup');
-    const closeBt = document.querySelector('.popup .close');
-
-    bookNow.forEach(button => {
         button.addEventListener('click', () => {
             popup.style.display = 'block';
         });
@@ -111,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const name = document.getElementById('name').value;
         const phoneNumber = document.getElementById('phone-number').value;
 
-        fetch('/save-phone-number', {
+        fetch('https://v7-studio.onrender.com/save-phone-number', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
