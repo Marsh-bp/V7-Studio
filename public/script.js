@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const name = document.getElementById('name').value;
         const phoneNumber = document.getElementById('phone-number').value;
 
-        fetch('https://v7-studio.onrender.com/', {
+        fetch('https://v7-studio.onrender.com/save-phone-number', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
