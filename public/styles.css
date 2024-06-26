@@ -423,8 +423,14 @@ section.active {
     }
 
     section {
-        font-size: 40px;
+        font-size: 30px; /* Decrease the font size for smaller screens */
         padding: 20px;
+        min-height: 70vh; /* Adjust the min-height for smaller screens */
+    }
+
+    #home, #photos, #package {
+        background-size: contain; /* Make sure the background images fit */
+        background-position: center; /* Center the background images */
     }
 
     .details {
@@ -435,4 +441,51 @@ section.active {
         padding: 5px;
         font-size: 18px;
     }
+
+    .slide {
+        min-width: 100%;
+        min-height: 70vh; /* Adjust the min-height for smaller screens */
+        font-size: 30px; /* Decrease the font size for slides on smaller screens */
+    }
+
+    .slider-container {
+        height: auto; /* Allow the container to adjust its height automatically */
+    }
+
+    .image {
+        height: auto;
+        width: 100%; 
+        margin-left: 0; /* Remove margin for better fit */
+    }
+
+    .image img {
+        width: 100%; /* Ensure the image fills the container */
+        height: auto; /* Automatically adjust height to maintain aspect ratio */
+    }
+
+    .home-design {
+        margin-top: 200px;
+        font-size: 24px; /* Decrease the font size for smaller screens */
+    }
+
+    .navigation span {
+        width: 40px;
+        height: 40px;
+        font-size: 30px;
+    }
+
+    .book, .book-silver, .silver-more, .more-details, .submit {
+        width: 100px;
+        height: 40px;
+        font-size: 14px;
+    }
+
+    .contact-img {
+        width: 100%;
+    }
+
+    .slider {
+        flex-direction: column; /* Stack slides vertically on smaller screens */
+    }
 }
+
