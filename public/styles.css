@@ -413,23 +413,22 @@ section.active {
     color: aqua;
 }
 @media (max-width: 768px) {
-    header {
-        padding: 10px 20px;
+     header {
+        padding: 10px 10px;
     }
-
     header nav a {
         margin-left: 20px;
         font-size: 16px;
     }
 
     section {
-        font-size: 30px; /* Decrease the font size for smaller screens */
-        padding: 20px;
-        min-height: 70vh; /* Adjust the min-height for smaller screens */
+        font-size: 20px; /* Decrease the font size for smaller screens */
+        padding: 10px;
+        min-height: 50vh; /* Adjust the min-height for smaller screens */
     }
 
     #home, #photos, #package {
-        background-size: contain; /* Make sure the background images fit */
+         /* Make sure the background images fit */
         background-position: center; /* Center the background images */
     }
 
@@ -448,9 +447,6 @@ section.active {
         font-size: 30px; /* Decrease the font size for slides on smaller screens */
     }
 
-    .slider-container {
-        height: auto; /* Allow the container to adjust its height automatically */
-    }
 
     .image {
         height: auto;
@@ -464,8 +460,8 @@ section.active {
     }
 
     .home-design {
-        margin-top: 200px;
-        font-size: 24px; /* Decrease the font size for smaller screens */
+        margin-top: 100px;
+        font-size: 20px; /* Decrease the font size for smaller screens */
     }
 
     .navigation span {
@@ -482,10 +478,6 @@ section.active {
 
     .contact-img {
         width: 100%;
-    }
-
-    .slider {
-        flex-direction: column; /* Stack slides vertically on smaller screens */
     }
 }
 
