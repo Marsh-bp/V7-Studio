@@ -443,7 +443,7 @@ section.active {
 
     .slide {
         min-width: 100%;
-        min-height: 70vh; /* Adjust the min-height for smaller screens */
+        min-height: 40vh; /* Adjust the min-height for smaller screens */
         font-size: 30px; /* Decrease the font size for slides on smaller screens */
     }
 
