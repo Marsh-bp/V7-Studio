@@ -413,7 +413,7 @@ section.active {
     color: aqua;
 }
 @media (max-width: 768px) {
-     header {
+    header {
         padding: 10px 10px;
     }
     header nav a {
@@ -428,7 +428,8 @@ section.active {
     }
 
     #home, #photos, #package {
-         /* Make sure the background images fit */
+        /* Make sure the background images fit */
+         /* Ensure background images cover the section */
         background-position: center; /* Center the background images */
     }
 
@@ -446,7 +447,6 @@ section.active {
         min-height: 40vh; /* Adjust the min-height for smaller screens */
         font-size: 30px; /* Decrease the font size for slides on smaller screens */
     }
-
 
     .image {
         height: auto;
