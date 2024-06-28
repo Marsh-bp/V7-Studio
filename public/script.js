@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const name = document.getElementById('name').value;
         const phoneNumber = document.getElementById('phone-number').value;
 
-        fetch('/save-phone-number', {
+        fetch('/api/save-phone-number', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
