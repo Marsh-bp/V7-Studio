@@ -35,7 +35,7 @@ header img.header-photo {
 }
 
 header a.logo {
-    font-size: 15px;
+    font-size: 25px;
     color: #fff;
     text-decoration: none;
     font-weight: 600;
@@ -415,6 +415,9 @@ section.active {
     color: aqua;
 }
 @media (max-width: 768px) {
+    header a.logo {
+    font-size: 15px;
+    }
     header {
         padding: 10px 10px;
     }
