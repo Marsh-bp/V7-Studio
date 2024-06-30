@@ -98,21 +98,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const images = document.querySelectorAll('.fullscreen-img');
     const overlay = document.createElement('div');
     overlay.className = 'overlay';
+
+    const closeButton = document.createElement('button');
+    closeButton.className = 'close-btn';
+    closeButton.innerHTML = '&times;';
+
+    overlay.appendChild(closeButton);
     document.body.appendChild(overlay);
 
     images.forEach(img => {
         img.addEventListener('click', function() {
-            overlay.innerHTML = ''; 
+            overlay.innerHTML = ''; // Clear previous content
+            overlay.appendChild(closeButton); // Add close button to overlay
             const imgClone = img.cloneNode(true);
             overlay.appendChild(imgClone);
-            overlay.style.display = 'flex'; 
+            overlay.style.display = 'flex'; // Display the overlay
         });
     });
 
-    overlay.addEventListener('click', function() {
+    // Close overlay when clicking the close button
+    closeButton.addEventListener('click', function() {
         overlay.style.display = 'none';
     });
 
+    // Close overlay when clicking outside the image
+    overlay.addEventListener('click', function(event) {
+        if (event.target === overlay) {
+            overlay.style.display = 'none';
+        }
+    });
+
+    // Close overlay on ESC key press
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape') {
             overlay.style.display = 'none';
