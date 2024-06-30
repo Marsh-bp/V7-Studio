@@ -2,15 +2,21 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const { MongoClient } = require('mongodb');
+require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-const uri = process.env.MONGODB_URI; // Ensure you have this set in your environment variables
+const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.use(bodyParser.json());
 app.use(cors());
+
+// Define a route for the root URL
+app.get('/', (req, res) => {
+  res.send('Hello, world! Welcome to my API');
+});
 
 app.post('/save-phone-number', async (req, res) => {
   try {
