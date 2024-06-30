@@ -314,9 +314,9 @@ section.active {
     
 }
 .image img {
-    width: 70%; /* Ensure the image fills the container */
-    height: auto; /* Automatically adjust height to maintain aspect ratio */
-    display: block; /* Remove any default inline spacing */
+    width: 70%; 
+    height: auto;
+    display: block; 
 }
 
 
@@ -413,23 +413,23 @@ section.active {
 .submit:active{
     color: aqua;
 }
-/* Updated CSS for full-screen image and close button */
+
 .fullscreen-img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Ensures image aspect ratio is maintained */
+    object-fit: contain; 
     cursor: pointer;
 }
 
-/* Styling for the full-screen overlay */
+
 .overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent black overlay */
-    display: none; /* Initially hidden */
+    background-color: rgba(0, 0, 0, 0.9); 
+    display: none; 
     justify-content: center;
     align-items: center;
     z-index: 1000;
@@ -472,7 +472,7 @@ section.active {
     }
     header nav a {
         margin-left: 20px;
-        font-size: 16px;
+        font-size: 13px;
     }
 
     section {
