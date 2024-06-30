@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const path = require('path');
 const { MongoClient } = require('mongodb');
 
 const app = express();
@@ -9,13 +10,15 @@ const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use(cors());
+app.use(express.static(path.join(__dirname, 'public'))); // Serve static files
 
 const uri = process.env.MONGODB_URI;
 let db;
 
+// Connect to MongoDB
 MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(client => {
-    db = client.db('Cluster0'); // replace with your actual database name
+    db = client.db('Cluster0'); // Replace with your actual database name
     console.log('Connected to MongoDB');
   })
   .catch(error => {
@@ -23,18 +26,19 @@ MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     process.exit(1); // Exit the process with failure
   });
 
+// API endpoint to save phone number
 app.post('/api/save-phone-number', (req, res) => {
   const { name, phoneNumber } = req.body;
+  console.log('Received data:', name, phoneNumber);
 
   if (!name || !phoneNumber) {
-    console.error('Validation error: Name and phone number are required');
     return res.status(400).json({ error: 'Name and phone number are required' });
   }
 
   const collection = db.collection('phoneNumbers');
   collection.insertOne({ name, phoneNumber })
     .then(result => {
-      console.log('Successfully saved phone number:', result);
+      console.log('Saved phone number:', result);
       res.status(201).json(result);
     })
     .catch(error => {
@@ -43,10 +47,12 @@ app.post('/api/save-phone-number', (req, res) => {
     });
 });
 
+// Root endpoint to serve the HTML file
 app.get('/', (req, res) => {
-  res.send('Hello, world! Welcome to my API');
+  res.sendFile(path.join(__dirname, 'public', 'V7_studio.html'));
 });
 
+// Start the server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
