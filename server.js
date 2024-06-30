@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // Replace with your actual MongoDB connection string
-const uri = mongodb+srv://v7studiophoto:<password>@cluster0.fr3oata.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0;
+const uri = process.env.MONGODB_URI;
 
 let db;
 
