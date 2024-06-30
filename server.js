@@ -18,7 +18,7 @@ let db;
 // Connect to MongoDB
 MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(client => {
-    db = client.db('Cluster0'); // Replace with your actual database name
+    db = client.db('Phone_number'); // Replace with your actual database name
     console.log('Connected to MongoDB');
   })
   .catch(error => {
