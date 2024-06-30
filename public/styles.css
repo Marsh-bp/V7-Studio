@@ -440,7 +440,27 @@ section.active {
     max-height: 90%;
     object-fit: contain;
 }
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1001;
+}
 
+.close-btn:hover {
+    background-color: #ccc;
+}
 @media (max-width: 768px) {
     header a.logo {
     font-size: 15px;
