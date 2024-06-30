@@ -1,34 +1,32 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const fs = require('fs');
-const path = require('path');
+const cors = require('cors');
+const { MongoClient } = require('mongodb');
+
 const app = express();
 const port = process.env.PORT || 3000;
 
+const uri = process.env.MONGODB_URI; // Ensure you have this set in your environment variables
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
 app.use(bodyParser.json());
+app.use(cors());
 
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'V7_studio.html'));
-});
-
-app.post('/save-phone-number', (req, res) => {
-    console.log('Received request to save phone number');
-    const name = req.body.name;
-    const phoneNumber = req.body.phoneNumber;
-    const data = `${name} - ${phoneNumber}\n`;
-    fs.appendFile('phone-numbers.txt', data, (err) => {
-        if (err) {
-            console.error('Error writing to file:', err);
-            res.status(500).send({ message: 'Failed to save phone number' });
-        } else {
-            console.log('Name and phone number saved successfully');
-            res.status(200).send({ message: 'Name and phone number saved successfully' });
-        }
-    });
+app.post('/save-phone-number', async (req, res) => {
+  try {
+    const { name, phoneNumber } = req.body;
+    await client.connect();
+    const database = client.db('Cluster0');
+    const collection = database.collection('phone-numbers');
+    const result = await collection.insertOne({ name, phoneNumber });
+    res.status(200).json({ success: true, data: result.ops[0] });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  } finally {
+    await client.close();
+  }
 });
 
 app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}/`);
+  console.log(`Server running at http://localhost:${port}/`);
 });
