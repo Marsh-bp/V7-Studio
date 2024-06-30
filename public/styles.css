@@ -80,12 +80,12 @@ section.active {
 }
 
 #home {
-    background-image: url('home.jpg'); 
+    background-image: url('images/home.jpg'); 
 }
 
 #package {
     position: relative;
-    background-image: url('aaaaa.jpg'); 
+    background-image: url('images/aaaaa.jpg'); 
 }
 .home-design{
     margin-top: 300px;
@@ -135,7 +135,7 @@ section.active {
 }
 
 .gold {
-    background-image: url('gold.jpg');
+    background-image: url('images/gold.jpg');
     color: yellow; 
     text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5); 
 
@@ -144,7 +144,7 @@ section.active {
 
 
 .silver {
-    background-image: url('silver.jpg');
+    background-image: url('images/silver.jpg');
     color:  rgb(87, 87, 87);
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); 
 
@@ -152,18 +152,18 @@ section.active {
 
 
 .bronze {
-    background-image: url('bronze.jpg');
+    background-image: url('images/bronze.jpg');
     color: #fcc793;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .other {
-    background-image: url('other.jpg'); 
+    background-image: url('images/other.jpg'); 
     color: rgb(0, 255, 238);
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
 .event1 {
-    background-image: url('event.jpg');
+    background-image: url('images/event.jpg');
     color: palegreen; 
     text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5); 
 
@@ -323,7 +323,7 @@ section.active {
 
 
 #photos {
-    background-image: url('aaaaa.jpg'); 
+    background-image: url('images/aaaaa.jpg'); 
 }
 
 #contact {
