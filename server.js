@@ -2,37 +2,42 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const { MongoClient } = require('mongodb');
-require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-const uri = process.env.MONGODB_URI;
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-
 app.use(bodyParser.json());
 app.use(cors());
 
-// Define a route for the root URL
+// Replace with your actual MongoDB connection string
+const uri = mongodb+srv://v7studiophoto:<password>@cluster0.fr3oata.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0;
+
+let db;
+
+MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(client => {
+    db = client.db('Cluster0');
+    console.log('Connected to MongoDB');
+  })
+  .catch(error => console.error(error));
+
+app.post('/api/save-phone-number', (req, res) => {
+  const { name, phoneNumber } = req.body;
+
+  if (!name || !phoneNumber) {
+    return res.status(400).json({ error: 'Name and phone number are required' });
+  }
+
+  const collection = db.collection('phoneNumbers');
+  collection.insertOne({ name, phoneNumber })
+    .then(result => res.status(201).json(result))
+    .catch(error => res.status(500).json({ error: 'An error occurred while saving the phone number' }));
+});
+
 app.get('/', (req, res) => {
   res.send('Hello, world! Welcome to my API');
 });
 
-app.post('/save-phone-number', async (req, res) => {
-  try {
-    const { name, phoneNumber } = req.body;
-    await client.connect();
-    const database = client.db('Cluster0');
-    const collection = database.collection('phone-numbers');
-    const result = await collection.insertOne({ name, phoneNumber });
-    res.status(200).json({ success: true, data: result.ops[0] });
-  } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
-  } finally {
-    await client.close();
-  }
-});
-
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}/`);
+  console.log(`Server is running on port ${port}`);
 });
