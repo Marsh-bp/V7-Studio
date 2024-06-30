@@ -9,7 +9,7 @@ module.exports = async (req, res) => {
       const { name, phoneNumber } = req.body;
 
       await client.connect();
-      const database = client.db('Cluster0');
+      const database = client.db('Phone_number');
       const collection = database.collection('phone-numbers');
 
       const result = await collection.insertOne({ name, phoneNumber });
