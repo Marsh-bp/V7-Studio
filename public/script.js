@@ -95,7 +95,29 @@ document.addEventListener('DOMContentLoaded', () => {
             popup.style.display = 'none';
         }
     };
+    const images = document.querySelectorAll('.fullscreen-img');
+    const overlay = document.createElement('div');
+    overlay.className = 'overlay';
+    document.body.appendChild(overlay);
 
+    images.forEach(img => {
+        img.addEventListener('click', function() {
+            overlay.innerHTML = ''; 
+            const imgClone = img.cloneNode(true);
+            overlay.appendChild(imgClone);
+            overlay.style.display = 'flex'; 
+        });
+    });
+
+    overlay.addEventListener('click', function() {
+        overlay.style.display = 'none';
+    });
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            overlay.style.display = 'none';
+        }
+    });
     const phoneForm = document.getElementById('phone-form');
     phoneForm.addEventListener('submit', (event) => {
         event.preventDefault();
